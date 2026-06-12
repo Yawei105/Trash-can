@@ -1,4 +1,4 @@
-# GitHub Actions: 部署 drone-brochure 并自动启用 GitHub Pages
+# GitHub Actions: 部署 drone-brochure 到 gh-pages 分支
 name: Deploy Drone Brochure
 
 on:
@@ -11,9 +11,6 @@ on:
 
 permissions:
   contents: write
-  pages: write
-  id-token: write
-  administration: write
 
 jobs:
   deploy:
@@ -28,23 +25,3 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./drone-brochure
           force_orphan: true
-
-      - name: Enable GitHub Pages (gh-pages branch)
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          set -e
-          if gh api "repos/${{ github.repository }}/pages" >/dev/null 2>&1; then
-            echo "Pages already enabled, updating source..."
-            gh api "repos/${{ github.repository }}/pages" -X PUT \
-              -f build_type=legacy \
-              -f 'source[branch]=gh-pages' \
-              -f 'source[path]=/'
-          else
-            echo "Enabling Pages for the first time..."
-            gh api "repos/${{ github.repository }}/pages" -X POST \
-              -f build_type=legacy \
-              -f 'source[branch]=gh-pages' \
-              -f 'source[path]=/'
-          fi
-          echo "Pages URL: https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/"
