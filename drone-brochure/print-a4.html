@@ -5,16 +5,16 @@
   <title>无人机产品手册 · A4 单页印刷版</title>
   <style>
     :root {
-      --bg: #0b1120;
-      --bg-alt: #111827;
-      --bg-card: #1e293b;
-      --text: #f1f5f9;
-      --text-muted: #94a3b8;
-      --accent: #0ea5e9;
-      --accent2: #6366f1;
-      --gold: #fbbf24;
-      --green: #34d399;
-      --border: rgba(255,255,255,.1);
+      --bg: #f0ede4;
+      --bg-alt: #e8e4da;
+      --bg-card: #faf8f2;
+      --text: #2a3224;
+      --text-muted: #5c6352;
+      --accent: #4a5c3a;
+      --accent2: #6b7d56;
+      --gold: #8a6f3e;
+      --green: #4a5c3a;
+      --border: rgba(47, 61, 38, 0.18);
     }
 
     @page { size: A4; margin: 0; }
@@ -66,11 +66,22 @@
       font-size: 14pt;
       font-weight: 900;
       letter-spacing: 1.5px;
-      background: linear-gradient(135deg, #fff 30%, var(--text-muted));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
+      color: var(--text);
       line-height: 1.2;
+    }
+
+    .header .org {
+      font-size: 7pt;
+      font-weight: 700;
+      color: var(--accent);
+      letter-spacing: 0.5px;
+      margin-bottom: 0.5mm;
+    }
+
+    .header .org-en {
+      font-size: 5pt;
+      color: var(--text-muted);
+      margin-bottom: 0.8mm;
     }
 
     .header .sub {
@@ -80,21 +91,32 @@
     }
 
     .header-badge {
-      text-align: right;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
     }
 
     .badge {
       font-size: 6.5pt;
       color: var(--accent);
       font-weight: 700;
-      border: 1px solid rgba(14,165,233,.35);
-      background: rgba(14,165,233,.1);
+      border: 1px solid rgba(74,92,58,.35);
+      background: rgba(74,92,58,.1);
       padding: 1mm 2.5mm;
       border-radius: 3px;
       letter-spacing: .5px;
+      display: inline-block;
     }
 
-    .badge-en { font-size: 5.5pt; color: var(--text-muted); margin-top: 1mm; }
+    .badge-en {
+      font-size: 5.5pt;
+      color: var(--text-muted);
+      margin-top: 1mm;
+      text-align: center;
+      white-space: nowrap;
+      transform: translateX(-0.3ch);
+    }
 
     /* Product cards 3x2 */
     .cards-grid {
@@ -147,7 +169,7 @@
     }
 
     .spec-item {
-      background: rgba(0,0,0,.25);
+      background: rgba(74,92,58,.06);
       border-radius: 2px;
       padding: 1mm 1.5mm;
       font-size: 5pt;
@@ -163,9 +185,9 @@
 
     .hl {
       font-size: 4.8pt;
-      background: rgba(52,211,153,.1);
-      color: var(--green);
-      border: 1px solid rgba(52,211,153,.2);
+      background: rgba(74,92,58,.12);
+      color: var(--accent);
+      border: 1px solid rgba(74,92,58,.2);
       padding: 0.3mm 1.2mm;
       border-radius: 2px;
     }
@@ -336,18 +358,46 @@
 
     /* Footer */
     .footer {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
       padding-top: 2mm;
       border-top: 1px solid var(--border);
       font-size: 5.5pt;
-      color: var(--text-muted);
+      color: var(--text);
       flex-shrink: 0;
     }
 
-    .footer strong { color: var(--text); }
+    .footer-brand {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: nowrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 3mm;
+      line-height: 1.4;
+      width: 100%;
+    }
 
+    .footer-org,
+    .footer-contact {
+      font-size: 5.5pt;
+      color: var(--text);
+      font-weight: 600;
+      white-space: nowrap;
+      flex: 0 0 auto;
+    }
+
+    .footer-org {
+      text-align: left;
+    }
+
+    .footer-contact {
+      text-align: right;
+      margin-left: auto;
+    }
+
+    .contact-gap {
+      display: inline-block;
+      width: 3ch;
+    }
     @media screen {
       body { padding: 16px; display: flex; justify-content: center; }
       .page { box-shadow: 0 8px 40px rgba(0,0,0,.5); }
@@ -379,12 +429,14 @@
             <circle cx="16" cy="18" r="3" fill="currentColor" opacity=".6"/>
           </svg>
           <div>
-            <h1>无人机产品系列手册</h1>
+            <p class="org">中国科学院空天信息创新研究院</p>
+            <p class="org-en">Aerospace Information Research Institute, Chinese Academy of Sciences</p>
+            <h1>无人机产品宣传手册</h1>
             <p class="sub">穿越机 · 多旋翼 · 固定翼 &nbsp;|&nbsp; 6 款机型 · 全系列配置报价</p>
           </div>
         </div>
         <div class="header-badge">
-          <div class="badge">2026 产品目录</div>
+          <div class="badge">AIRCAS · 2026</div>
           <div class="badge-en">UAV Product Catalog</div>
         </div>
       </header>
@@ -403,8 +455,10 @@
       </div>
 
       <footer class="footer">
-        <span><strong>无人机产品手册</strong> · 价格均为整机组装参考报价，配置可按需定制</span>
-        <span>如需报价咨询请联系销售团队</span>
+        <div class="footer-brand">
+          <span class="footer-org">中国科学院空天信息创新研究院</span>
+          <span class="footer-contact">北京市海淀区中关村北一条9号<span class="contact-gap"></span>yorkstudio@foxmail.com</span>
+        </div>
       </footer>
     </div>
   </div>
@@ -466,7 +520,6 @@
       <strong>选配说明：</strong>
       以上价格为标准配置参考价，含所列核心器件整机组装费用，不含运费及定制开发。
       <ul>${notes.map(p => `<li>${p.name}：${p.priceNote}</li>`).join('')}
-        <li>配置可按需升级，欢迎联系销售团队获取详细报价</li>
       </ul>`;
   </script>
 </body>
