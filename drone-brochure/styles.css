@@ -396,19 +396,30 @@ body {
   display: flex;
   justify-content: flex-start;
   align-items: flex-start;
+  width: 100%;
 }
-.footer-brand p {
+.footer-brand {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  width: 100%;
+}
+.footer-org,
+.footer-contact {
   font-size: 14px;
-  color: var(--text-muted);
-  letter-spacing: 0.5px;
-  line-height: 1.6;
-}
-.footer-brand p:first-child {
   color: var(--text);
   font-weight: 600;
-  font-size: 16px;
+  letter-spacing: 0.5px;
+  line-height: 1.4;
+  white-space: nowrap;
 }
-.footer-brand p + p { margin-top: 4px; }
+.footer-contact {
+  text-align: right;
+  margin-left: auto;
+}
 .contact-gap { display: inline-block; width: 3ch; }
 
 /* Print */
